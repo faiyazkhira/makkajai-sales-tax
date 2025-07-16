@@ -10,7 +10,8 @@ public class TaxCalculator {
         if(item.isImported()){
             taxRate += 0.05;
         }
-        return roundTax(item.getPrice() * taxRate);
+        double totalItemPrice = item.getPrice() * item.getQuantity();
+        return roundTax(totalItemPrice * taxRate);
     }
 
     public static double roundTax(double tax){

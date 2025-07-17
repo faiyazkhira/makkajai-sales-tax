@@ -8,9 +8,9 @@ public class Receipt {
     private final List<Item> items;
     private final List<Double> itemTaxes;
 
-    public Receipt(List<Item> items, List<Double> itemTaxes) {
-        this.items = items;
-        this.itemTaxes = itemTaxes;
+    public Receipt() {
+        this.items = new ArrayList<>();
+        this.itemTaxes = new ArrayList<>();
     }
 
     public void addItem(Item item){
@@ -37,7 +37,7 @@ public class Receipt {
         for(int i=0; i<items.size(); i++){
             Item item = items.get(i);
             double totalPrice = (item.getPrice() * item.getQuantity()) + itemTaxes.get(i);
-            lines.add(String.format("%d %s at %.2f", item.getQuantity(), item.getName(), totalPrice));
+            lines.add(String.format("%d %s: %.2f", item.getQuantity(), item.getName(), totalPrice));
         }
         return lines;
     }
